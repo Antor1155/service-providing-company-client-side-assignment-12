@@ -9,7 +9,7 @@ import Navbar from './shared/Navbar/Navbar';
 function App() {
 
   return (
-    <div className="App">
+    <div  className="App">
       <Navbar></Navbar>
       <Routes>
 
