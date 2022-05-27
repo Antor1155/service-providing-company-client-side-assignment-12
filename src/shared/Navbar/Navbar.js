@@ -5,7 +5,7 @@ const Navbar = () => {
     return (
         <div class="navbar bg-orange-300">
             <div class=" navbar-start">
-                <a class="btn btn-ghost normal-case text-xl">Alex Tools</a>
+                <Link to="/" class="btn btn-ghost normal-case text-xl">Alex Tools</Link>
 
             </div>
 
