@@ -52,7 +52,7 @@ const Login = () => {
                         <label class="label">
                             <span class="label-text">Your email</span>
                         </label>
-                        <input type="email" placeholder="Type here" class=" " required />
+                        <input type="email" name='email' placeholder="Type here" class=" " required />
                     </div>
                     <div class="form-control">
                         <label class="label">
