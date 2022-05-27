@@ -47,6 +47,9 @@ const Myprotfolio = () => {
                 <span className='text-orange-800 px-2'>Github</span>
                 <span className='text-orange-800 px-2'>git</span>
                 <span className='text-orange-800 px-2'>photoshop</span>
+                <span className='text-orange-800 px-2'>Adobe xd</span>
+                <span className='text-orange-800 px-2'>figma</span>
+                <span className='text-orange-800 px-2'>tcp/ip</span>
                 
             </div>
         </div>
