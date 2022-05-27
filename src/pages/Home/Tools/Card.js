@@ -11,7 +11,7 @@ const card = () => {
                 <p>"If a dog chews shoes whose shoes does he choose?"</p>
                 <p >Price: <strong className='text-accent'>$ 5 /</strong> pieces</p>
                 <p className='text-primary'>available : 5000 pieces</p>
-                <input type="number" min={500} placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+               
                 <label class="label">
                     <span class="label-text-alt text-red-500">min order 500 pieces</span>
                 </label>
