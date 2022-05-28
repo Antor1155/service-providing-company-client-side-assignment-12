@@ -10,7 +10,7 @@ const AddProduct = () => {
         const minimum = event.target.minimum.value;
         const price = event.target.price.value;
 
-        fetch('http://localhost:5000/addItem',{
+        fetch('https://young-river-42057.herokuapp.com/addItem',{
             method: 'POST',
             headers: {"content-type": "application/json"},
             body: JSON.stringify({name, image, description, available, minimum, price})

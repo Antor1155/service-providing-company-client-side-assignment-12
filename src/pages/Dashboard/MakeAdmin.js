@@ -5,13 +5,13 @@ const MakeAdmin = () => {
     const[r, setR] =useState("");
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://young-river-42057.herokuapp.com/users`, {
         }).then(res => res.json())
             .then(data => setUsers(data.users));
     }, [r])
     
     function handleAdmin(id){
-        fetch('http://localhost:5000/makeAdmin',{
+        fetch('https://young-river-42057.herokuapp.com/makeAdmin',{
             method: "PUT",
             headers:{
                 "content-type": "application/json"

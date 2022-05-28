@@ -9,7 +9,7 @@ const Dashboard = () => {
     const [role, setRole] = useState('');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/userRole?email=${user.email}`).then(res => res.json())
+        fetch(`https://young-river-42057.herokuapp.com/userRole?email=${user.email}`).then(res => res.json())
             .then(data => setRole(data));
     }, [user])
 

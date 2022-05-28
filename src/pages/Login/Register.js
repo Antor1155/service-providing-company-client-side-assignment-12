@@ -52,7 +52,7 @@ const Register = () => {
     }
     if (user || googleUser) {
         if(user){
-            fetch('http://localhost:5000/addUser',{
+            fetch('https://young-river-42057.herokuapp.com/addUser',{
                 method: 'POST',
                 headers: {"content-type": "application/json"},
                 body: JSON.stringify({email:user.user.email})
@@ -61,7 +61,7 @@ const Register = () => {
             return  navigate(from, { replace: true });
         }
         else{
-            fetch('http://localhost:5000/addUser',{
+            fetch('https://young-river-42057.herokuapp.com/addUser',{
                 method: 'POST',
                 headers: {"content-type": "application/json"},
                 body: JSON.stringify({email:googleUser.user.email})
