@@ -1,19 +1,24 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const card = () => {
+const card = ({tool}) => {
+
+
+
+
     return (
         <div className="card lg:w-56 bg-base-100 mx-auto shadow-xl">
             <figure>
-                <img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" />
+                <img className='h-40' src={tool.image} alt="Shoes" />
             </figure>
             <div className="card-body items-center text-center">
-                <h2 className="card-title">Shoes!</h2>
-                <p>"If a dog chews shoes whose shoes does he choose?"</p>
-                <p >Price: <strong className='text-accent'>$ 5 /</strong> pieces</p>
-                <p className='text-primary'>available : 5000 pieces</p>
+                <h2 className="card-title">{tool.name}</h2>
+                <p>{tool.description}</p>
+                <p >Price: <strong className='text-accent'>${tool.price} /</strong> pieces</p>
+                <p className='text-primary'>available : {tool.available} pieces</p>
                
                 <label className="label">
-                    <span className="label-text-alt text-red-500">min order 500 pieces</span>
+                    <span className="label-text-alt text-red-500">min order {tool.minimum} pieces</span>
                 </label>
                 <div className="card-actions">
                     <button className="btn btn-primary">Buy Now</button>

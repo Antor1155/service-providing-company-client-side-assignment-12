@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from "./Card"
 
 const Tools = () => {
+    const [tools, setTools]=useState([]);
+    useEffect(()=>{
+        fetch('http://localhost:5000/products')
+        .then(res => res.json())
+        .then(data => setTools(data.product));
+    },[])
     return (
         <div className='pt-16 pb-20'>
             <h2 className='text-4xl font-semibold mb-16'> A glimpse of good products we supply</h2>
             <div className='grid gap-y-10 grid-cols-1 lg:grid-cols-3 '>
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>
+                {
+                    tools.slice(0,3).map(tool => <Card tool={tool}></Card>)
+                }
+              
+                
             </div>
         </div>
     );

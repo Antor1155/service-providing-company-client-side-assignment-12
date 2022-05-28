@@ -58,6 +58,7 @@ const Register = () => {
                 body: JSON.stringify({email:user.user.email})
             }).then(res => res.json())
             .then(data => console.log(data));
+            return  navigate(from, { replace: true });
         }
         else{
             fetch('http://localhost:5000/addUser',{
@@ -66,9 +67,8 @@ const Register = () => {
                 body: JSON.stringify({email:googleUser.user.email})
             }).then(res => res.json())
             .then(data => console.log(data));
+            return  navigate(from, { replace: true });
         }
-
-        navigate(from, { replace: true });
     }
 
 

@@ -7,7 +7,6 @@ import auth from '../../utilities/firebase.init';
 const Dashboard = () => {
     const [user, loading] = useAuthState(auth);
     const [role, setRole] = useState('');
-    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`http://localhost:5000/userRole?email=${user.email}`).then(res => res.json())
@@ -20,8 +19,6 @@ const Dashboard = () => {
 
     return (
         <div>
-
-
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center mt-5">
@@ -36,12 +33,17 @@ const Dashboard = () => {
                         {/* <!-- Sidebar content here --> */}
                         <li><Link to=''>My profile</Link></li>
 
-                        <li><Link to='myOrder'>My order</Link></li>
-                        <li><Link to='addReview'>Add a review</Link></li>
+
+                        {role?.role === 'user' && <>
+                            <li><Link to='myOrder'>My order</Link></li>
+                            <li><Link to='addReview'>Add a review</Link></li>
+                        </>}
+
+
                         {role?.role === 'admin' && <>
+                            <li><Link to='makeAdmin'>Make admin</Link></li>
                             <li><Link to='manageAllOrders'>Manage All orders</Link></li>
                             <li><Link to='addProduct'>Add products</Link></li>
-                            <li><Link to='makeAdmin'>Make admin</Link></li>
                             <li><Link to='manageProduct'>Manage products</Link></li>
                         </>}
 

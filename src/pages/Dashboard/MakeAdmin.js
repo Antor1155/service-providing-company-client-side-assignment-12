@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const MakeAdmin = () => {
+    const [users, setUsers] = useState([]);
+    const[r, setR] =useState("");
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/users`, {
+        }).then(res => res.json())
+            .then(data => setUsers(data.users));
+    }, [r])
+    
+    function handleAdmin(id){
+        fetch('http://localhost:5000/makeAdmin',{
+            method: "PUT",
+            headers:{
+                "content-type": "application/json"
+            },
+            body:JSON.stringify({_id:id})
+        }).then(res=>res.json())
+        .then(data=>setR(data));
+    }
+
     return (
         <div>
             <h3 className='text-xl font-semibold text-accent mb-4'>All Users</h3>
@@ -9,7 +29,7 @@ const MakeAdmin = () => {
                     {/* <!-- head --> */}
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th></th>
                             <th>email</th>
                             <th>status</th>
                             <th>make admin</th>
@@ -17,28 +37,15 @@ const MakeAdmin = () => {
                     </thead>
                     <tbody>
                         {/* <!-- row 1 --> */}
-                        <tr>
-
-                            <td>name</td>
-                            <td>aha@gmail.com</td>
-                            <td>user</td>
-                            <td><button className='btn-sm rounded-lg btn-primary'>make admin</button></td>
-                        </tr>
-                        {/* <!-- row 2 --> */}
-                        <tr>
-
-                            <td>name</td>
-                            <td>aha@gmail.com</td>
-                            <td>user</td>
-                            <td><button className='btn-sm rounded-lg btn-primary'>make admin</button></td>
-                        </tr>
-                        {/* <!-- row 3 --> */}
-                        <tr>
-                            <td>name</td>
-                            <td>aha@gmail.com</td>
-                            <td>user</td>
-                            <td><button className='btn-sm rounded-lg btn-primary'>make admin</button></td>
-                        </tr>
+                        {users.map((user, index) =>
+                            <tr>
+                                <td>{index + 1}</td>
+                                <td>{user?.email}</td>
+                                <td>{user.role? user.role : "customer"}</td>
+                                <td>{user.role? <span className='font-bold text-primary'>Already admin</span>:
+                                <button onClick={()=>handleAdmin(user?._id)} className='btn-sm rounded-lg btn-primary'>make admin</button>}</td>
+                            </tr>
+                       )}
                     </tbody>
                 </table>
             </div>

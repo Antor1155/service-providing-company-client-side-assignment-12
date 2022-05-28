@@ -2,6 +2,22 @@ import React from 'react';
 
 const AddProduct = () => {
     const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        const name = event.target.name.value;
+        const image = event.target.image.value;
+        const description = event.target.description.value;
+        const available = event.target.available.value;
+        const minimum = event.target.minimum.value;
+        const price = event.target.price.value;
+
+        fetch('http://localhost:5000/addItem',{
+            method: 'POST',
+            headers: {"content-type": "application/json"},
+            body: JSON.stringify({name, image, description, available, minimum, price})
+        }).then(res => res.json())
+        .then(data => console.log(data));
+
+        event.target.reset();
     }
     return (
         <div className='bg-base-500 pb-5'>
@@ -50,7 +66,7 @@ const AddProduct = () => {
 
 
 
-                <input className='text-center btn btn-primary mt-6' type="sumbit" value="add product" />
+                <input className='text-center btn btn-primary mt-6' type="submit" value="add product" />
             </form>
         </div>
     </div>
