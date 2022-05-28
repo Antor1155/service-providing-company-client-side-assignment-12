@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const Purchase = () => {
+    const {id} = useParams();
+    const [product, setProduct] =useState({})
+
+    useEffect(()=>{
+        fetch(`http://localhost:5000/product/${id}`)
+        .then(res => res.json())
+        .then(data => setProduct(data.product));
+    },[])
+    console.log(product);
     return (
         <div className="card lg:w-96 bg-base-100 my-6 mx-auto shadow-xl">
         <figure>
-            <img className='w-56' src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" />
+            <img className='' src={product.image} alt="Shoes" />
         </figure>
         <div className="card-body items-center text-center">
-            <h2 className="card-title">Shoes!</h2>
-            <p >Price: <strong className='text-accent'>$ 5 /</strong> pieces</p>
-            <p className='text-primary'>available : 5000 pieces</p>
+            <h2 className="card-title">{product.name}</h2>
+            <p >Price: <strong className='text-accent'>$ {product.price}/</strong> pieces</p>
+            <p className='text-primary'>available : {product.available} pieces</p>
             <label className="label">
-                <span className="label-text-alt text-red-500">min order 500 pieces</span>
+                <span className="label-text-alt text-red-500">min order {product.minimum} pieces</span>
             </label>
 
                 <form className='bg-orange-100 w-80 px-4 pb-5'>

@@ -1,11 +1,13 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
-const card = ({tool}) => {
+const Card = ({tool}) => {
+    const navigate = useNavigate()
 
-
-
-
+    function handlePurchase(id){
+        navigate(`/purchase/${id}`)
+        console.log(id);
+    }
     return (
         <div className="card lg:w-56 bg-base-100 mx-auto shadow-xl">
             <figure>
@@ -21,11 +23,11 @@ const card = ({tool}) => {
                     <span className="label-text-alt text-red-500">min order {tool.minimum} pieces</span>
                 </label>
                 <div className="card-actions">
-                    <button className="btn btn-primary">Buy Now</button>
+                    <button onClick={()=>{handlePurchase(tool._id)}} className="btn btn-primary">Buy Now</button>
                 </div>
             </div>
         </div>
     );
 };
 
-export default card;
+export default Card;
