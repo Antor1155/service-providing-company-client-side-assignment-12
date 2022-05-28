@@ -17,6 +17,7 @@ import Purchase from './pages/Purchase/Purchase';
 import Footer from './shared/Footer';
 import Navbar from './shared/Navbar/Navbar';
 import Nothingfound from './shared/Nothingfound';
+import RequireAdmin from './utilities/RequireAdmin';
 import RequireAuth from './utilities/RequireAuth';
 
 
@@ -40,10 +41,10 @@ function App() {
           <Route path='myOrder' element={<MyOrder></MyOrder>}></Route>
           <Route path='addReview' element={<AddReview></AddReview>}></Route>
 
-          <Route path='manageProduct' element={<ManageProducts></ManageProducts>}></Route>
-          <Route path='addProduct' element={<AddProduct></AddProduct>}></Route>
-          <Route path='makeAdmin' element={<MakeAdmin></MakeAdmin>}></Route>
-          <Route path='manageAllOrders' element={<ManageAllOrders></ManageAllOrders>}></Route>
+          <Route path='manageProduct' element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}></Route>
+          <Route path='addProduct' element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}></Route>
+          <Route path='makeAdmin' element={<RequireAdmin><MakeAdmin></MakeAdmin></RequireAdmin>}></Route>
+          <Route path='manageAllOrders' element={<RequireAdmin><ManageAllOrders></ManageAllOrders></RequireAdmin>}></Route>
         </Route >
 
         <Route path="*" element={<Nothingfound />}></Route>
