@@ -42,9 +42,9 @@ const Dashboard = () => {
 
                         {role?.role === 'admin' && <>
                             <li><Link to='makeAdmin'>Make admin</Link></li>
-                            <li><Link to='manageAllOrders'>Manage All orders</Link></li>
                             <li><Link to='addProduct'>Add products</Link></li>
                             <li><Link to='manageProduct'>Manage products</Link></li>
+                            <li><Link to='manageAllOrders'>Manage All orders</Link></li>
                         </>}
 
                     </ul>

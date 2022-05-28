@@ -27,8 +27,6 @@ const Navbar = () => {
                     <li><Link to="/blog">Blog</Link></li>
                     <li><Link to="/protfolio">Protfolio</Link></li>
 
-                    <li><Link to="/purchase">Purchase</Link></li>
-
                     {user ? <>
                         <li><Link to="/dashboard">Dashboard</Link></li>
                         <li><Link to="/dashboard/myProfile"><span className='font-bold text-xl'>{user.displayName}</span></Link></li>
