@@ -12,11 +12,11 @@ const card = () => {
                 <p >Price: <strong className='text-accent'>$ 5 /</strong> pieces</p>
                 <p className='text-primary'>available : 5000 pieces</p>
                
-                <label class="label">
-                    <span class="label-text-alt text-red-500">min order 500 pieces</span>
+                <label className="label">
+                    <span className="label-text-alt text-red-500">min order 500 pieces</span>
                 </label>
-                <div class="card-actions">
-                    <button class="btn btn-primary">Buy Now</button>
+                <div className="card-actions">
+                    <button className="btn btn-primary">Buy Now</button>
                 </div>
             </div>
         </div>

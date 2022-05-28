@@ -12,7 +12,7 @@ import company6 from "../../images/company/company6.jpg";
 
 const CompanyView = () => {
     return (
-        <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-primary pt-10 pb-16">
+        <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-primary pt-10 pb-16">
             <h2 className='text-5xl font-bold'>Company strength</h2>
             <div className='py-4 flex justify-center flex-wrap'>
                 <img className="lg:w-56 w-32 m-4" src={company1} alt="Burger" />

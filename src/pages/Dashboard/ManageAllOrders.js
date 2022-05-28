@@ -5,8 +5,8 @@ const ManageAllOrders = () => {
         <div>
             <h3 className='mb-4'>Manage all orders</h3>
             <div>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     {/* <!-- head --> */}
                     <thead>
                         <tr>

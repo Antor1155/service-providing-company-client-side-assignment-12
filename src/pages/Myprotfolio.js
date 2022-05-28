@@ -4,15 +4,15 @@ import college from "../images/company/collage.jpg"
 const Myprotfolio = () => {
     return (
         <div>
-            <div class="hero min-h-screen bg-base-200">
-                <div class="hero-content flex-col lg:flex-row">
-                    <img src={college} class="lg:max-w-sm md:w-100 rounded-lg shadow-2xl" alt='websites screenshot' />
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content flex-col lg:flex-row">
+                    <img src={college} className="lg:max-w-sm md:w-100 rounded-lg shadow-2xl" alt='websites screenshot' />
                     <div>
-                        <h1 class="text-2xl font-bold"><span className='text-primary'>Name:</span> MD AZIZUL HAKIM ANTOR</h1>
-                        <h2 class="text-xl font-bold"><span className='text-primary'>Email:</span> md.antor1155@gmail.com</h2>
+                        <h1 className="text-2xl font-bold"><span className='text-primary'>Name:</span> MD AZIZUL HAKIM ANTOR</h1>
+                        <h2 className="text-xl font-bold"><span className='text-primary'>Email:</span> md.antor1155@gmail.com</h2>
                         <div className="divider"></div>
                         <h3 className='text-xl mt-4'> Educational Background</h3>
-                        <div class="py-6 flex flex-col items-start">
+                        <div className="py-6 flex flex-col items-start">
                             <p><span className='text-red-500'>Bachalor:</span> Weifang University of Science and Technology, China</p>
                             <p><span className='text-orange-400'>college:</span> Military Collegiate School, Khulna</p>
                             <p><span className='text-blue-500'>High Schoole:</span> Military Collegiate School, Khulna</p>

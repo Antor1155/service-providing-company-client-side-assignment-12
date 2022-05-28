@@ -48,17 +48,17 @@ const Login = () => {
             <h2 className='text-center mt-9 mb-4 text-3xl font-bold'>Please login</h2>
             <div className='mx-auto border-4 mb-2 p-2 w-72'>
                 <form className='loginForm' onSubmit={handleFormSubmit}>
-                    <div class="form-control ">
-                        <label class="label">
-                            <span class="label-text">Your email</span>
+                    <div className="form-control ">
+                        <label className="label">
+                            <span className="label-text">Your email</span>
                         </label>
-                        <input type="email" name='email' placeholder="Type here" class=" " required />
+                        <input type="email" name='email' placeholder="Type here" className=" " required />
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Your password</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Your password</span>
                         </label>
-                        <input type="password" name="password" placeholder="Type here" class="" required />
+                        <input type="password" name="password" placeholder="Type here" className="" required />
                     </div>
                     <input className='text-center btn btn-primary w-28 mt-6' type="sumbit" value="Login" />
                 </form>
@@ -66,7 +66,7 @@ const Login = () => {
 
             <p>New to the side? <Link className='text-blue-500' to="/register">please register</Link></p>
 
-            <div class="divider my-8">OR</div>
+            <div className="divider my-8">OR</div>
 
             <button onClick={handleGoogleSignIn} className='btn text-white pr-7 my-4'>continue with
                 <img className='w-12 inline' src={googleImg} alt="google" />
