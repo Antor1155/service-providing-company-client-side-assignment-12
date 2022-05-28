@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import auth from '../../utilities/firebase.init';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle} from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import googleImg from "../../images/google.png";
+import Loading from "../../shared/Loading";
 
 
 
 const Register = () => {
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
 
-    useEffect(() => {
-        document.body.style = 'background:rgb(240, 238, 238)';
-    }, [])
+    const [updateProfile, updating, uerror] = useUpdateProfile(auth);
 
     const [
         createUserWithEmailAndPassword,
@@ -19,10 +21,6 @@ const Register = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
-    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-    const handleGoogleSignIn = () => {
-        signInWithGoogle();
-    }
 
     // register with email and password  
     const handleFormSubmit = async (event) => {
@@ -30,24 +28,49 @@ const Register = () => {
 
         const email = event.target.email.value;
         const password = event.target.password.value;
-        const name = event.target.name.value;
+        const displayName = event.target.name.value;
 
 
         await createUserWithEmailAndPassword(email, password);
 
-        // adding the user to database 
-        // fetch('https://gentle-gorge-38352.herokuapp.com/addUser',{
-        //     method: 'POST',
-        //     headers: {"content-type": "application/json"},
-        //     body: JSON.stringify({name, catagory: "officials"})
-        // }).then(res => res.json())
-        // .then(data => console.log(data));
-
+        await updateProfile({ displayName });
         event.target.reset();
 
     }
 
     // registering with google 
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+    const handleGoogleSignIn = () => {
+        signInWithGoogle();
+    }
+
+    if (updating || loading || googleLoading) {
+        return (<Loading></Loading>)
+    }
+    let commonError = '';
+    if (error || googleError) {
+        commonError = error || googleError;
+    }
+    if (user || googleUser) {
+        if(user){
+            fetch('http://localhost:5000/addUser',{
+                method: 'POST',
+                headers: {"content-type": "application/json"},
+                body: JSON.stringify({email:user.user.email})
+            }).then(res => res.json())
+            .then(data => console.log(data));
+        }
+        else{
+            fetch('http://localhost:5000/addUser',{
+                method: 'POST',
+                headers: {"content-type": "application/json"},
+                body: JSON.stringify({email:googleUser.user.email})
+            }).then(res => res.json())
+            .then(data => console.log(data));
+        }
+
+        navigate(from, { replace: true });
+    }
 
 
     return (
@@ -56,7 +79,7 @@ const Register = () => {
             <h2 className='text-center mt-9 mb-4 text-3xl font-bold text-primary'>Please Register</h2>
             <div className='mx-auto border-4 mb-2 p-2 w-72'>
                 <form className='loginForm' onSubmit={handleFormSubmit}>
-                <div className="form-control ">
+                    <div className="form-control ">
                         <label className="label">
                             <span className="label-text">Your name</span>
                         </label>
@@ -74,7 +97,12 @@ const Register = () => {
                         </label>
                         <input type="password" name="password" placeholder="Type here" className="" required />
                     </div>
-                    <input className='text-center btn btn-primary w-28 mt-6' type="sumbit" value="Login" />
+
+                    <label className="label">
+                        <span className="label-text text-red-500">{commonError? commonError.message.split(':')[1] : ''}</span>
+                    </label>
+
+                    <input className='text-center btn btn-primary w-28 mt-3' type="submit" value="Register" />
                 </form>
             </div>
 

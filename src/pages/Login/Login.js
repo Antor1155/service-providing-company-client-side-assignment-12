@@ -12,10 +12,6 @@ const Login = () => {
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
-    useEffect(() => {
-        document.body.style = 'background:rgb(240, 238, 238)';
-    }, [])
-
     // sign in with email password
     const [
         signInWithEmailAndPassword,
