@@ -76,7 +76,7 @@ const Register = () => {
         <div className='bg-base-500 my-5 pb-5'>
 
             <h2 className='text-center mt-9 mb-4 text-3xl font-bold text-primary'>Please Register</h2>
-            <div className='mx-auto border-4 mb-2 p-2 w-72'>
+            <div className='mx-auto bg-slate-300 border-4 mb-2 p-2 w-72'>
                 <form className='loginForm' onSubmit={handleFormSubmit}>
                     <div className="form-control ">
                         <label className="label">

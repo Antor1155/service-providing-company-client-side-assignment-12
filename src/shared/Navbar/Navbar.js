@@ -29,7 +29,7 @@ const Navbar = () => {
 
                     {user ? <>
                         <li><Link to="/dashboard">Dashboard</Link></li>
-                        <li><Link to="/dashboard/myProfile"><span className='font-bold text-xl'>{user.displayName}</span></Link></li>
+                        <li><Link to="/protfolio"><span className='font-bold text-xl'>{user.displayName}</span></Link></li>
                         <li><button onClick={logout}>SignOut</button></li>
                     </> : <>
                         <li><Link to="/login">Login</Link></li>
