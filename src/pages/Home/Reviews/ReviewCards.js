@@ -1,4 +1,5 @@
 import React from 'react';
+import star from "../../../images/star-svgrepo-com.svg"
 
 const ReviewCards = () => {
     return (
@@ -9,6 +10,10 @@ const ReviewCards = () => {
                 </div>
             </div>
             <div className="card-body items-center text-center">
+                <div className='flex'>
+                    <img className='w-4' src={star} alt="" />
+                    <img className='w-4' src={star} alt="" />
+                </div>
                 <h2 className="card-title">Shoes!</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
 

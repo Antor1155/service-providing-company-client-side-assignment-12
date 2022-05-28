@@ -1,11 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Blog from './pages/Blog';
+import AddProduct from './pages/Dashboard/AddProduct';
+import AddReview from './pages/Dashboard/AddReview';
 import Dashboard from './pages/Dashboard/Dashboard';
+import ManageProducts from './pages/Dashboard/ManageProducts';
+import MyOrder from './pages/Dashboard/MyOrder';
+import MyProfile from './pages/Dashboard/MyProfile';
 import Homepage from './pages/Home/HomePage/Homepage';
 import Login from './pages/Login/Login';
 import Register from './pages/Login/Register';
-import Myprotfolio from './pages/Purchase/Myprotfolio';
+import Myprotfolio from './pages/Myprotfolio';
 import Purchase from './pages/Purchase/Purchase';
 import Footer from './shared/Footer';
 import Navbar from './shared/Navbar/Navbar';
@@ -15,7 +20,7 @@ import Nothingfound from './shared/Nothingfound';
 function App() {
 
   return (
-    <div  className="App">
+    <div className="App">
       <Navbar></Navbar>
       <Routes>
 
@@ -26,12 +31,22 @@ function App() {
         <Route path="/protfolio" element={<Myprotfolio />}></Route>
 
         <Route path="/purchase" element={<Purchase />}></Route>
-        <Route path="/dashboard" element={<Dashboard />}></Route>
-        
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path='myProfile' element={<MyProfile></MyProfile>}></Route>
+
+          <Route path='myOrder' element={<MyOrder></MyOrder>}></Route>
+          <Route path='addReview' element={<AddReview></AddReview>}></Route>
+
+          <Route path='manageProduct' element={<ManageProducts></ManageProducts>}></Route>
+          <Route path='addProduct' element={<AddProduct></AddProduct>}></Route>
+          <Route path='makeAdmin' element={<MyProfile></MyProfile>}></Route>
+          <Route path='manageProduct' element={<MyProfile></MyProfile>}></Route>
+        </Route >
+
         <Route path="*" element={<Nothingfound />}></Route>
-      </Routes>
+      </Routes >
       <Footer></Footer>
-    </div>
+    </div >
   );
 }
 

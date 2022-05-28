@@ -1,5 +1,5 @@
 import React from 'react';
-import college from "../../images/company/collage.jpg"
+import college from "../images/company/collage.jpg"
 
 const Myprotfolio = () => {
     return (
