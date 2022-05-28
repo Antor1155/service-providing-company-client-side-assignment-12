@@ -17,6 +17,7 @@ import Purchase from './pages/Purchase/Purchase';
 import Footer from './shared/Footer';
 import Navbar from './shared/Navbar/Navbar';
 import Nothingfound from './shared/Nothingfound';
+import RequireAuth from './utilities/RequireAuth';
 
 
 function App() {
@@ -33,9 +34,9 @@ function App() {
         <Route path="/protfolio" element={<Myprotfolio />}></Route>
 
         <Route path="/purchase" element={<Purchase />}></Route>
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route path='myProfile' element={<MyProfile></MyProfile>}></Route>
 
+        <Route path="/dashboard" element={<RequireAuth><Dashboard /></RequireAuth>}>
+          <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path='myOrder' element={<MyOrder></MyOrder>}></Route>
           <Route path='addReview' element={<AddReview></AddReview>}></Route>
 
