@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import googleImg from "../../images/google.png";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from "../../utilities/firebase.init";
+import Loading from '../../shared/Loading';
 
 
 const Login = () => {
@@ -33,6 +33,14 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         signInWithGoogle();
     }
+    
+    if (loading || googleLoading) {
+        return (<Loading></Loading>)
+    }
+    let commonError = '';
+    if (error || googleError) {
+        commonError = error || googleError;
+    }
 
     if (googleUser || user) {
         navigate(from, { replace: true });
@@ -48,15 +56,20 @@ const Login = () => {
                         <label className="label">
                             <span className="label-text">Your email</span>
                         </label>
-                        <input type="email" name='email' placeholder="Type here" className=" " required />
+                        <input type="email" name='email' placeholder="Type here"  required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Your password</span>
                         </label>
-                        <input type="password" name="password" placeholder="Type here" className="" required />
+                        <input type="password" name="password" placeholder="Type here" required />
                     </div>
-                    <input className='text-center btn btn-primary w-28 mt-6' type="sumbit" value="Login" />
+
+                    <label className="label">
+                        <span className="label-text text-red-500">{commonError? commonError.message.split(':')[1] : ''}</span>
+                    </label>
+
+                    <input type="submit" className='text-center btn btn-primary w-28 mt-6'  value="Login" />
                 </form>
             </div>
 

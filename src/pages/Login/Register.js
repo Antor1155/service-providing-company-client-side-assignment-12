@@ -34,7 +34,6 @@ const Register = () => {
         await createUserWithEmailAndPassword(email, password);
 
         await updateProfile({ displayName });
-        event.target.reset();
 
     }
 
