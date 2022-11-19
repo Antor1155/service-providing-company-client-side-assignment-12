@@ -3,7 +3,7 @@
 A warehouse website for tools company named: [food first warehoue](https://finalwarehouse-4650b.web.app/).
 
 
-### `alex warehouse is the warehouse managing website on tools company where employee got to update, deliver and restock their daily materials.`
+### `alex warehouse is the warehouse managing website on tools company where customer got to update, order and re-order their daily materials.`
 
 ## What's special about this website :-
 
